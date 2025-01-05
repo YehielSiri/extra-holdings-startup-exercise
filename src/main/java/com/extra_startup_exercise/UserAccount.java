@@ -1,9 +1,22 @@
 package com.extra_startup_exercise;
 
+import jakarta.persistence.*;
+
 import java.util.Objects;
 
+@Entity
 public class UserAccount {
-//    private Integer id;
+    @Id
+    @SequenceGenerator(
+        name = "userAccount_id_sequence",
+            sequenceName = "userAccount_id_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+        strategy = GenerationType.SEQUENCE,
+            generator = "userAccount_id_sequence"
+    )
+//    private Integer id;   // Will get a primary key from JPA
     private String firstName = "";
     private String surename = "";
     private String userName = "";    // Add security validation - username has to be unique!

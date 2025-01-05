@@ -1,19 +1,18 @@
-#server:
-#  port: 3000
-#
-#spring:
-#  main:
-#    web-application-type: servlet
-#  h2:
-#    console:
-#      enabled: true
-#  datasource:
-#    url: jdbc:h2:mem:dcbapp
-#    driver-class-name: org.h2.Driver
-#    username: sa
-#    password: password
-#  jpa:
-#    spring.jpa.database-platfor
-#
-#
-#  org.hibernate.dialect.H2Dialect
+server:
+  port: 3000
+
+spring:
+  main:
+    web-application-type: servlet
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:mem:dcbapp
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+
+
