@@ -16,7 +16,7 @@ public class UserAccount {
         strategy = GenerationType.SEQUENCE,
             generator = "userAccount_id_sequence"
     )
-//    private Integer id;   // Will get a primary key from JPA
+    private Integer id;   // Will get a primary key from JPA
     private String firstName = "";
     private String surename = "";
     private String userName = "";    // Add security validation - username has to be unique!
@@ -40,6 +40,14 @@ public class UserAccount {
 
     public UserAccount() {
 
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getFirstName() {

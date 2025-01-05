@@ -44,4 +44,9 @@ public class Main {
         userAccount.setPassword(request.password());
         userAccountRepository.save(userAccount);
     }
+
+    @DeleteMapping
+    public void deleteUserAccount(@PathVariable("userAccountId") Integer id) {
+        userAccountRepository.deleteById(id);
+    }
 }
