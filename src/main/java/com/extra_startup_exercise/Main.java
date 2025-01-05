@@ -8,7 +8,7 @@ import java.util.List;
 
 @SpringBootApplication
 @RestController
-@RequestMapping("api/v1/user_accounts")
+@RequestMapping("api/v1/userAccounts")
 public class Main {
 
     private final UserAccountRepository userAccountRepository;
@@ -21,8 +21,9 @@ public class Main {
         SpringApplication.run(Main.class, args);
     }
 
+    // Load operation
     @GetMapping
-    public List<UserAccount> getUserAccounts() {
+    public List<UserAccount> loadUserAccounts() {
         return userAccountRepository.findAll();
     }
 
@@ -35,8 +36,9 @@ public class Main {
 
     }
 
+    // Create operation
     @PostMapping
-    public void addUserAccount(@RequestBody NewUserAccountRequest request) {
+    public void createUserAccount(@RequestBody NewUserAccountRequest request) {
         UserAccount userAccount = new UserAccount();
         userAccount.setFirstName(request.firstName());
         userAccount.setSurename(request.surename());
@@ -45,8 +47,24 @@ public class Main {
         userAccountRepository.save(userAccount);
     }
 
-    @DeleteMapping
-    public void deleteUserAccount(@PathVariable("userAccountId") Integer id) {
+    // Delete operation
+    @DeleteMapping("api/v1/userAccounts/{userAccountId}")
+    public String deleteUserAccount(@PathVariable("userAccountId") Integer id) {
         userAccountRepository.deleteById(id);
+        return "Deleted successfully";
     }
+
+    // Update operation
+    @PutMapping("api/v1/userAccounts/{userAccountId}")
+    public UserAccount updateUserAccount(
+            @RequestBody NewUserAccountRequest request,
+            @PathVariable("userAccountId") Integer id) {
+        UserAccount toUpdate = userAccountRepository.findById(id).get();
+        toUpdate.setFirstName(request.firstName);
+        toUpdate.setSurename(request.surename);
+        toUpdate.setUserName(request.userName);
+        toUpdate.setPassword(request.password);
+        return userAccountRepository.save(toUpdate);
+    }
+
 }
