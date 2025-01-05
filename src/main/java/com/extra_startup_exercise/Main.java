@@ -38,13 +38,14 @@ public class Main {
 
     // Create operation
     @PostMapping
-    public void createUserAccount(@RequestBody NewUserAccountRequest request) {
+    public String createUserAccount(@RequestBody NewUserAccountRequest request) {
         UserAccount userAccount = new UserAccount();
         userAccount.setFirstName(request.firstName());
         userAccount.setSurename(request.surename());
         userAccount.setUserName(request.userName());
         userAccount.setPassword(request.password());
         userAccountRepository.save(userAccount);
+        return "Saved successfully";
     }
 
     // Delete operation
