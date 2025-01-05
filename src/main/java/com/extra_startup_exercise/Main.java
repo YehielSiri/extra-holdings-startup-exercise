@@ -2,9 +2,7 @@ package com.extra_startup_exercise;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,22 +25,23 @@ public class Main {
     public List<UserAccount> getUserAccounts() {
         return userAccountRepository.findAll();
     }
-//    @GetMapping("/greet")
-//    public GreetResponse greet() {
-//        return new GreetResponse(
-//                "Hello",
-//                List.of("Java", "Python", "C"),
-//                new Person("Shmuel"));
-//    }
-//
-//    record Person(String name){
-//
-//    }
-//
-//    record GreetResponse(
-//            String greet,
-//            List<String> favProgrammingLanguages,
-//            Person person) {
-//
-//    }
+
+    record NewUserAccountRequest(
+            String firstName,
+            String surename,
+            String userName,
+            String password
+    ) {
+
+    }
+
+    @PostMapping
+    public void addUserAccount(@RequestBody NewUserAccountRequest request) {
+        UserAccount userAccount = new UserAccount();
+        userAccount.setFirstName(request.firstName());
+        userAccount.setSurename(request.surename());
+        userAccount.setUserName(request.userName());
+        userAccount.setPassword(request.password());
+        userAccountRepository.save(userAccount);
+    }
 }
