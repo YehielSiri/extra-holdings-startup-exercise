@@ -1,7 +1,6 @@
-package com.extra_startup_exercise;
+package com.extra_startup_exercise.entity;
 
 import jakarta.persistence.*;
-
 import java.util.Objects;
 
 @Entity
