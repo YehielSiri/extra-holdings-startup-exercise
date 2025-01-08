@@ -9,7 +9,7 @@ spring:
       enabled: true
   datasource:
     url: jdbc:h2:mem:testdb
-#    url: jdbc:h2:file:/data/extraStartupExercise # For not losing data after application restart
+#    url: jdbc:h2:file:/data/extraStartupExercise   # File as database for not losing data after application restart
     driver-class-name: org.h2.Driver
     username: sa
     password: sa
@@ -17,4 +17,18 @@ spring:
 #    database-platform: org.hibernate.dialect.H2Dialect
     open-in-view: true
 
+# Enable OpenAPI and Swagger UI
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
 
+
+#  # Attempt to overcome SwaggerUI's bug - using actuator
+#  show-actuator: true
+#management:
+#  server:
+#    port: 3030
