@@ -3,11 +3,11 @@ package com.extra_startup_exercise.entity;
 import jakarta.persistence.*;
 
 import java.util.Objects;
-//import jakarta.validation.constraints.NotNull;
-//import jakarta.validation.constraints.NotBlank;
-//import jakarta.validation.constraints.Email;
-//import jakarta.validation.constraints.NotNull;
-//import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class UserAccount {
@@ -21,22 +21,21 @@ public class UserAccount {
         strategy = GenerationType.SEQUENCE,
             generator = "userAccount_id_sequence"
     )
-//    @NotNull(message = "Enter a valid UserAccount Id")
+    @NotNull(message = "Enter a valid UserAccount Id")
     private Integer id;   // Will get a primary key from JPA
 
-//    @NotBlank(message = "User Account first name can't be left empty")
+    @NotBlank(message = "User Account first name can't be left empty")
     private String firstName = "";
 
-//    @NotBlank(message = "User Account last name can't be left empty")
+    @NotBlank(message = "User Account last name can't be left empty")
     private String surename = "";
 
-    //    @Email(message = "Please enter a valid email Id")
-//    @NotNull(message = "Email can not be NULL")
-    private String userName = "";    // Add security validation - username has to be unique!
+    @NotNull(message = "Email can not be NULL")
+    @Email(message = "Please enter a valid email Id")
+    @Column(unique = true)  // A security validation - username has to be unique!
+    private String userName = "";
 
-//    @NotBlank(message = "employee name can't be left empty")
-//    @size(min = 8, max = 8,
-//            message = "Password should have a length of 8 characters.")
+    @Size(min = 8, max = 8, message = "Password should have a length of 8 characters.")
     private String password = "";
 
     public UserAccount(String firstName,
