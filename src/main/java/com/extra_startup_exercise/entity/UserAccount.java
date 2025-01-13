@@ -6,7 +6,6 @@ import java.util.Objects;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -21,7 +20,6 @@ public class UserAccount {
         strategy = GenerationType.SEQUENCE,
             generator = "userAccount_id_sequence"
     )
-    @NotNull(message = "Enter a valid UserAccount Id")
     private Integer id;   // Will get a primary key from JPA
 
     @NotBlank(message = "User Account first name can't be left empty")

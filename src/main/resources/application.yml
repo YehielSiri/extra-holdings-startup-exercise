@@ -1,5 +1,5 @@
 server:
-  port: 3000
+  port: 3030
 
 spring:
   main:
@@ -17,7 +17,7 @@ spring:
 #    database-platform: org.hibernate.dialect.H2Dialect
     open-in-view: true
 
-# Enable OpenAPI and Swagger UI
+# Enable OpenAPI and Swagger UI:
 springdoc:
   api-docs:
     enabled: true
@@ -26,9 +26,12 @@ springdoc:
     enabled: true
     path: /swagger-ui.html
 
-
-#  # Attempt to overcome SwaggerUI's bug - using actuator
-#  show-actuator: true
-#management:
-#  server:
-#    port: 3030
+# Enable monitoring endpoints by exposing metrics:
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"#beans
+        ##### Best practice - carefully select which endpoints to expose based on our monitoring and operational needs. #####
+    health:
+    show-details: always
