@@ -13,6 +13,18 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>extra-startup-exercise</name>
 	<description>Demo project for Spring Boot</description>
+	<!--Probably not necessary, but for caching directly by infinispan in Java-->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.infinispan</groupId>
+				<artifactId>infinispan-bom</artifactId>
+				<version>${infinispan.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<url/>
 	<licenses>
 		<license/>
@@ -30,6 +42,7 @@
 		<java.version>23</java.version>
 		<infinispan.version>15.0.11.Final</infinispan.version>
 		<liquibase.version>4.27.0</liquibase.version>
+		<spring.version>3.3.7</spring.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -77,12 +90,8 @@
 			<artifactId>micrometer-registry-prometheus</artifactId>
 		</dependency>
 
-		<!--Two dependencies for enable monitoring, specifically by Prometheus-->
+		<!--Lombok dependency-->
 <!--		<dependency>-->
-<!--			<groupId></groupId>-->
-<!--			<artifactId></artifactId>-->
-<!--		</dependency>-->
-		<!--		<dependency>-->
 <!--			<groupId>org.projectlombok</groupId>-->
 <!--			<artifactId>lombok</artifactId>-->
 <!--			<optional>true</optional>-->
@@ -90,22 +99,32 @@
 <!--		</dependency>-->
 
 
-		<!--	<dependency>-->
-<!--		<groupId>org.liquibase</groupId>-->
-<!--		<artifactId>liquibase-cdi</artifactId>-->
-<!--		<version>${liquibase.version}</version>-->
-<!--	</dependency>-->
-<!--	<dependency>-->
-<!--		<groupId>org.liquibase</groupId>-->
-<!--		<artifactId>liquibase-core</artifactId>-->
-<!--		<version>${liquibase.version}</version>-->
-<!--	</dependency>-->
+		<!--Dependency for enable caching our project by Infinispian cache.-->
+		<dependency>
+			<groupId>org.infinispan</groupId>
+			<artifactId>infinispan-spring-boot3-starter-embedded</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+<!--			<version>${version.spring}</version>-->
+		</dependency>
+		<!--Probably not necessary, but for caching directly by infinispan in Java-->
+		<dependency>
+			<groupId>org.infinispan</groupId>
+			<artifactId>infinispan-core</artifactId>
+		</dependency>
+
+		<!--Two dependencies for managing database by liquibase.-->
 <!--		<dependency>-->
-<!--			<groupId>org.infinispan</groupId>-->
-<!--			<artifactId>infinispan-bom</artifactId>-->
-<!--			<version>${infinispan.version}</version>-->
-<!--			<type>pom</type>-->
-<!--			<scope>import</scope>-->
+<!--			<groupId>org.liquibase</groupId>-->
+<!--			<artifactId>liquibase-cdi</artifactId>-->
+<!--			<version>${liquibase.version}</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>org.liquibase</groupId>-->
+<!--			<artifactId>liquibase-core</artifactId>-->
+<!--			<version>${liquibase.version}</version>-->
 <!--		</dependency>-->
 
 </dependencies>

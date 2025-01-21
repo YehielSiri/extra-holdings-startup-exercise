@@ -31,7 +31,14 @@ management:
   endpoints:
     web:
       exposure:
-        include: "*"#beans
-        ##### Best practice - carefully select which endpoints to expose based on our monitoring and operational needs. #####
+        include: "*"
+        ##### Best practice - carefully select which endpoints to expose based on our monitoring and operational needs. For example, [ "prometheus", "metrics"] #####
     health:
     show-details: always
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+      distribution:
+        percentiles-histogram:
+          http: true

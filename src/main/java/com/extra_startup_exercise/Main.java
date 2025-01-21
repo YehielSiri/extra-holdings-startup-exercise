@@ -2,9 +2,6 @@ package com.extra_startup_exercise;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-//import com.extra_startup_exercise.entity.UserAccount;
-//import com.extra_startup_exercise.repository.UserAccountRepository;
-//import org.springframework.web.bind.annotation.*;
 
 @SpringBootApplication
 public class Main {

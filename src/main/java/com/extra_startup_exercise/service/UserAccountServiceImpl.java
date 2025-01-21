@@ -4,7 +4,10 @@ import com.extra_startup_exercise.entity.UserAccount;
 import com.extra_startup_exercise.repository.UserAccountRepository;
 import java.util.List;
 import java.util.Objects;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,18 +18,21 @@ public class UserAccountServiceImpl
     private UserAccountRepository userAccountRepository;
 
     // Create operation
+    @Cacheable(value = "userAccounts")
     @Override
     public UserAccount createUserAccount(UserAccount userAccount) {
         return userAccountRepository.save(userAccount);
     }
 
     // Load operation
+    @Cacheable(value = "userAccounts")
     @Override
     public List<UserAccount> loadUserAccountList() {
         return (List<UserAccount>) userAccountRepository.findAll();
     }
 
     // Update operation
+    @Cacheable(value = "userAccounts")
     @Override
     public UserAccount updateUserAccount(UserAccount detailsToUpdate, Integer userAccountIdInDB) {
         UserAccount userAccountInDB = userAccountRepository.findById(userAccountIdInDB).get();
@@ -94,6 +100,7 @@ public class UserAccountServiceImpl
     }
 
     // Delete operation
+    @CacheEvict(value = "userAccounts", key = "#userAccountId")
     @Override
     public String deleteUserAccountById(Integer userAccountId) {
         userAccountRepository.deleteById(userAccountId);
