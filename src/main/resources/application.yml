@@ -16,6 +16,9 @@ spring:
   jpa:
 #    database-platform: org.hibernate.dialect.H2Dialect
     open-in-view: true
+  cache:
+    infinispan:
+      config: infinispan.xml
 
 # Enable OpenAPI and Swagger UI:
 springdoc:
