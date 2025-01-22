@@ -1,7 +1,10 @@
 package com.extra_startup_exercise.entity;
 
+import com.extra_startup_exercise.security.Role;
 import jakarta.persistence.*;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.NotBlank;
@@ -35,6 +38,10 @@ public class UserAccount {
 
     @Size(min = 8, max = 8, message = "Password should have a length of 8 characters.")
     private String password = "";
+
+    // For authentication & authorization by Spring Boot security.
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     public UserAccount(String firstName,
                        String surename,

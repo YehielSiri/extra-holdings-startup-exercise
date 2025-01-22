@@ -32,6 +32,7 @@
 		<java.version>23</java.version>
 		<infinispan.version>15.0.11.Final</infinispan.version>
 		<liquibase.version>4.27.0</liquibase.version>
+		<jjwt.version>0.11.5</jjwt.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -93,14 +94,40 @@
 <!--			<groupId>org.infinispan</groupId>-->
 <!--			<artifactId>infinispan-spring6-embedded</artifactId>-->
 <!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>org.infinispan</groupId>-->
+<!--			<artifactId>infinispan-spring-boot3-starter-embedded</artifactId>-->
+<!--			<version>${infinispan.version}</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>org.springframework</groupId>-->
+<!--			<artifactId>spring-context</artifactId>-->
+<!--		</dependency>-->
+
+		<!--Dependencies for authentication & authorization by JWT & Spring Security.-->
 		<dependency>
-			<groupId>org.infinispan</groupId>
-			<artifactId>infinispan-spring-boot3-starter-embedded</artifactId>
-			<version>${infinispan.version}</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-api</artifactId>
+			<version>${jjwt.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-impl</artifactId>
+			<version>${jjwt.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-jackson</artifactId>
+			<version>${jjwt.version}</version>
 		</dependency>
 
 		<!--Two dependencies for managing database by liquibase.-->

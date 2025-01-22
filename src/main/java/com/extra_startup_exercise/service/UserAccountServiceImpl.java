@@ -18,21 +18,21 @@ public class UserAccountServiceImpl
     private UserAccountRepository userAccountRepository;
 
     // Create operation
-    @Cacheable
+//    @Cacheable
     @Override
     public UserAccount createUserAccount(UserAccount userAccount) {
         return userAccountRepository.save(userAccount);
     }
 
     // Load operation
-    @Cacheable
+//    @Cacheable
     @Override
     public List<UserAccount> loadUserAccountList() {
         return (List<UserAccount>) userAccountRepository.findAll();
     }
 
     // Update operation
-    @Cacheable
+//    @Cacheable
     @Override
     public UserAccount updateUserAccount(UserAccount detailsToUpdate, Integer userAccountIdInDB) {
         UserAccount userAccountInDB = userAccountRepository.findById(userAccountIdInDB).get();
@@ -100,7 +100,7 @@ public class UserAccountServiceImpl
     }
 
     // Delete operation
-    @CacheEvict(key = "#userAccountId")
+//    @CacheEvict(key = "#userAccountId")
     @Override
     public String deleteUserAccountById(Integer userAccountId) {
         userAccountRepository.deleteById(userAccountId);
