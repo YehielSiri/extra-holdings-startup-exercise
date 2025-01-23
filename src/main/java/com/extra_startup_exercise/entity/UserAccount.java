@@ -37,8 +37,9 @@ public class UserAccount {
     private String password = "";
 
     // For authentication & authorization by Spring Boot security.
-    @Enumerated(EnumType.STRING)
-    private Role role;
+//    @Enumerated(EnumType.STRING)
+//    private Role role;
+    private String roles;
 
     public UserAccount(String firstName,
                        String surename,
@@ -100,12 +101,20 @@ public class UserAccount {
         this.password = password;
     }
 
-    public Role getRole() {
-        return role;
+//    public Role getRole() {
+//        return role;
+//    }
+
+//    public void setRole(Role role) {
+//        this.role = role;
+//    }
+
+    public String getRoles() {
+        return roles;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRoles(String roles) {
+        this.roles = roles;
     }
 
     @Override
