@@ -1,5 +1,6 @@
 package com.extra_startup_exercise.controller;
 
+import com.extra_startup_exercise.entity.AuthRequest;
 import com.extra_startup_exercise.entity.UserAccount;
 //import com.extra_startup_exercise.service.UserAccountService;     # BUG: He can't decode this interface!
 import com.extra_startup_exercise.service.*;

@@ -29,9 +29,9 @@ public class UserAccount {
     private String surename = "";
 
     @NotNull(message = "Email can not be NULL")
-    @Email(message = "Please enter a valid email Id")
+    @Email(message = "Please enter a valid email Id") // Using 'email' because it's the correct field for login
     @Column(unique = true)  // A security validation - username has to be unique!
-    private String userName = "";
+    private String username = "";
 
     @Size(min = 8, max = 8, message = "Password should have a length of 8 characters.")
     private String password = "";
@@ -42,16 +42,16 @@ public class UserAccount {
 
     public UserAccount(String firstName,
                        String surename,
-                       String userName,
+                       String username,
                        String password) {
         // Validate fields are not null
         if (firstName != null ||
                 surename != null ||
-                userName != null ||
+                username != null ||
                 password != null) {
             this.firstName = firstName;
             this.surename = surename;
-            this.userName = userName;
+            this.username = username;
             this.password = password;
         }
     }
@@ -84,12 +84,12 @@ public class UserAccount {
         this.surename = surename;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -115,13 +115,13 @@ public class UserAccount {
         UserAccount that = (UserAccount) o;
         return getFirstName().equals(that.getFirstName()) &&
                 getSurename().equals(that.getSurename()) &&
-                getUserName().equals(that.getUserName()) &&
+                getUsername().equals(that.getUsername()) &&
                 getPassword().equals(that.getPassword());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getFirstName(), getSurename(), getUserName(), getPassword());
+        return Objects.hash(getFirstName(), getSurename(), getUsername(), getPassword());
     }
 
     @Override
@@ -129,7 +129,7 @@ public class UserAccount {
         return "UserAccount{" +
                 "firstName='" + firstName + '\'' +
                 ", surename='" + surename + '\'' +
-                ", userName='" + userName + '\'' +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }

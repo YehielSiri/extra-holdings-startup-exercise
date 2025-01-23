@@ -33,7 +33,7 @@ public class UserAccountServiceImpl
     public List<UserAccount> loadUserAccountList() {
         return (List<UserAccount>) userAccountRepository.findAll();
     }
-    //    @Cacheable
+//    @Cacheable
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return null;
@@ -60,11 +60,11 @@ public class UserAccountServiceImpl
                     detailsToUpdate.getSurename());
         }
 
-        if (Objects.nonNull(detailsToUpdate.getUserName())
+        if (Objects.nonNull(detailsToUpdate.getUsername())
                 && !"".equalsIgnoreCase(
-                detailsToUpdate.getUserName())) {
-            userAccountInDB.setUserName(
-                    detailsToUpdate.getUserName());
+                detailsToUpdate.getUsername())) {
+            userAccountInDB.setUsername(
+                    detailsToUpdate.getUsername());
         }
 
         if (Objects.nonNull(detailsToUpdate.getPassword())
