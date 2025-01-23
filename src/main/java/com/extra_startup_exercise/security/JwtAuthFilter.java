@@ -2,6 +2,7 @@ package com.extra_startup_exercise.security;
 
 import com.extra_startup_exercise.service.JwtService;
 import com.extra_startup_exercise.service.UserAccountService;
+import com.extra_startup_exercise.service.UserAccountServiceImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -23,7 +24,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     private JwtService jwtService;
 
     @Autowired
-    private UserAccountService userAccountService;
+    private UserAccountServiceImpl userAccountService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,
@@ -43,7 +44,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
         // If the token is valid and no authentication is set in the context
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = userAccountService.loadUserAccountByUsername(username);
+            UserDetails userDetails = userAccountService.loadUserByUsername(username);
 
             // Validate token and set authentication
             if (jwtService.validateToken(token, userDetails)) {

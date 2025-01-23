@@ -9,5 +9,5 @@ import java.util.Optional;
 @Repository
 public interface UserAccountRepository
         extends JpaRepository<UserAccount, Integer> {
-    Optional<UserAccount> findByEmail(String email); // 'email' is the correct field for login
+    Optional<UserAccount> findByEmail(String email); // The 'email' field is used for login
 }
