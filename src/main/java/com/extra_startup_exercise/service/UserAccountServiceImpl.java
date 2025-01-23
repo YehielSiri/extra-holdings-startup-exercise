@@ -4,6 +4,7 @@ import com.extra_startup_exercise.entity.UserAccount;
 import com.extra_startup_exercise.repository.UserAccountRepository;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
@@ -11,6 +12,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,11 +22,17 @@ public class UserAccountServiceImpl
     @Autowired
     private UserAccountRepository userAccountRepository;
 
+    @Autowired
+    private PasswordEncoder encoder;
+
     // Create operation
 //    @Cacheable
     @Override
     public UserAccount createUserAccount(UserAccount userAccount) {
-        return userAccountRepository.save(userAccount);
+        // Encode password before saving the user
+        userAccount.setPassword(encoder.encode(userAccount.getPassword()));
+
+        return userAccountRepository.save(userAccount); // Return the saved entity
     }
 
     // Load operations
@@ -36,7 +44,11 @@ public class UserAccountServiceImpl
 //    @Cacheable
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null;
+        Optional<UserAccount> userAccountDetail = userAccountRepository.findByEmail(username); // 'email' is used as username
+
+        // Converting UserAccount to UserDetails
+        return userAccountDetail.map(UserAccountDetails::new)
+                .orElseThrow(() -> new UsernameNotFoundException("User account not found: " + username));
     }
 
     // Update operation
