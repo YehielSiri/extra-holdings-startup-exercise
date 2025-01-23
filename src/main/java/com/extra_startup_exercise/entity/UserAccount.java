@@ -1,10 +1,7 @@
 package com.extra_startup_exercise.entity;
 
-import com.extra_startup_exercise.security.Role;
 import jakarta.persistence.*;
 
-import java.util.Collection;
-import java.util.List;
 import java.util.Objects;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.NotBlank;

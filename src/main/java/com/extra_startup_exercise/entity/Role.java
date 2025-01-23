@@ -1,4 +1,4 @@
-package com.extra_startup_exercise.security;
+package com.extra_startup_exercise.entity;
 
 public enum Role {
 
