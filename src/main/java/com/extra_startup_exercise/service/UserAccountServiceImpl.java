@@ -8,11 +8,14 @@ import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserAccountServiceImpl
-        implements UserAccountService {
+        implements UserAccountService, UserDetailsService {
 
     @Autowired
     private UserAccountRepository userAccountRepository;
@@ -24,11 +27,16 @@ public class UserAccountServiceImpl
         return userAccountRepository.save(userAccount);
     }
 
-    // Load operation
+    // Load operations
 //    @Cacheable
     @Override
     public List<UserAccount> loadUserAccountList() {
         return (List<UserAccount>) userAccountRepository.findAll();
+    }
+    //    @Cacheable
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return null;
     }
 
     // Update operation
