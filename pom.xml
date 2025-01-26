@@ -104,7 +104,7 @@
 <!--			<artifactId>spring-context</artifactId>-->
 <!--		</dependency>-->
 
-		<!--Dependencies for authentication & authorization by JWT & Spring Security.-->
+		<!--Five dependencies for authentication & authorization by JWT & Spring Security.-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>

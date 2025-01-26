@@ -4,6 +4,7 @@ server:
 spring:
   main:
     web-application-type: servlet
+    allow-circular-references: true
   h2:
     console:
       enabled: true

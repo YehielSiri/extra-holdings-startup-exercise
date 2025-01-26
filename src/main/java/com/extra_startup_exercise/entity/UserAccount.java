@@ -20,20 +20,24 @@ public class UserAccount {
         strategy = GenerationType.SEQUENCE,
             generator = "userAccount_id_sequence"
     )
+    @Column(name = "id")
     private Integer id;   // Will get a primary key from JPA
 
     @NotBlank(message = "User Account first name can't be left empty")
+    @Column(name = "firstName")
     private String firstName = "";
 
     @NotBlank(message = "User Account last name can't be left empty")
+    @Column(name = "surename")
     private String surename = "";
 
     @NotNull(message = "Email can not be NULL")
     @Email(message = "Please enter a valid email Id") // Using 'email' because it's the correct field for login
-    @Column(unique = true)  // A security validation - username has to be unique!
+    @Column(name = "username", unique = true)  // A security validation - username has to be unique!
     private String username = "";
 
     @Size(min = 8, max = 8, message = "Password should have a length of 8 characters.")
+    @Column(name = "password")
     private String password = "";
 
     // For authentication & authorization by Spring Boot security.

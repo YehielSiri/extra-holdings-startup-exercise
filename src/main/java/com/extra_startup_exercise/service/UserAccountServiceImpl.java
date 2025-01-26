@@ -44,7 +44,7 @@ public class UserAccountServiceImpl
 //    @Cacheable
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<UserAccount> userAccountDetail = userAccountRepository.findByEmail(username); // 'email' is used as username
+        Optional<UserAccount> userAccountDetail = userAccountRepository.findByUsername(username); // 'email' is used as username
 
         // Converting UserAccount to UserDetails
         return userAccountDetail.map(UserAccountDetails::new)
