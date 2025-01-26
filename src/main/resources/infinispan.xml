@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <infinispan>
     <cache-container default-cache="default">
         <local-cache name="default">
             <locking isolation="REPEATABLE_READ" />
+            <expiration max-idle="5000" lifespan="5000" interval="5000"/> <!--Set expiration settings to 5 sec lifespan to test easily the caching-->
         </local-cache>
     </cache-container>
 </infinispan>

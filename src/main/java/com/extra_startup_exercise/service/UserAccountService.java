@@ -3,7 +3,6 @@
 package com.extra_startup_exercise.service;
 
 import com.extra_startup_exercise.entity.UserAccount;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.List;
 

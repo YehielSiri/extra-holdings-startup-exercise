@@ -26,7 +26,7 @@ public class UserAccountServiceImpl
     private PasswordEncoder encoder;
 
     // Create operation
-//    @Cacheable
+    @Cacheable
     @Override
     public UserAccount createUserAccount(UserAccount userAccount) {
         // Encode password before saving the user
@@ -36,12 +36,12 @@ public class UserAccountServiceImpl
     }
 
     // Load operations
-//    @Cacheable
+    @Cacheable
     @Override
     public List<UserAccount> loadUserAccountList() {
         return (List<UserAccount>) userAccountRepository.findAll();
     }
-//    @Cacheable
+    @Cacheable
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<UserAccount> userAccountDetail = userAccountRepository.findByUsername(username); // 'email' is used as username
@@ -52,7 +52,7 @@ public class UserAccountServiceImpl
     }
 
     // Update operation
-//    @Cacheable
+    @Cacheable
     @Override
     public UserAccount updateUserAccount(UserAccount detailsToUpdate, Integer userAccountIdInDB) {
         UserAccount userAccountInDB = userAccountRepository.findById(userAccountIdInDB).get();
@@ -120,7 +120,7 @@ public class UserAccountServiceImpl
     }
 
     // Delete operation
-//    @CacheEvict(key = "#userAccountId")
+    @CacheEvict(key = "#userAccountId")
     @Override
     public String deleteUserAccountById(Integer userAccountId) {
         userAccountRepository.deleteById(userAccountId);

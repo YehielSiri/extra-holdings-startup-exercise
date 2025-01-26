@@ -21,6 +21,10 @@ spring:
 #    infinispan:
 #      config: infinispan.xml
 
+infinispan:
+  embedded:
+    configXml: infinispan.xml
+
 # Enable OpenAPI and Swagger UI:
 springdoc:
   api-docs:

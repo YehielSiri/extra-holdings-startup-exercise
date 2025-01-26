@@ -32,7 +32,7 @@ public class UserAccount {
     private String surename = "";
 
     @NotNull(message = "Email can not be NULL")
-    @Email(message = "Please enter a valid email Id") // Using 'email' because it's the correct field for login
+    @Email(message = "Please enter a valid email Id")
     @Column(name = "username", unique = true)  // A security validation - username has to be unique!
     private String username = "";
 
