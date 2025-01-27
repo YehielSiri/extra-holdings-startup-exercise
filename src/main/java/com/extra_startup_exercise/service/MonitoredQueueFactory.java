@@ -1,15 +1,18 @@
 package com.extra_startup_exercise.service;
 
 import io.micrometer.core.instrument.MeterRegistry;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.concurrent.ArrayBlockingQueue;
 
-@Component
-//@RequiredArgsConstructor
+@Service
 public class MonitoredQueueFactory {
 
-    private MeterRegistry meterRegistry;
+    private final MeterRegistry meterRegistry;
+
+    public MonitoredQueueFactory(MeterRegistry meterRegistry) {
+        this.meterRegistry = meterRegistry;
+    }
 
     public <T> ArrayBlockingQueue<T> create(String name, int capacity) {
         ArrayBlockingQueue<T> queue = new ArrayBlockingQueue<>(capacity);

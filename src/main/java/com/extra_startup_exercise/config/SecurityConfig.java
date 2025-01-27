@@ -36,11 +36,14 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable()) // Disable CSRF for stateless APIs
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("api/v1/auth/createNewUserAccount", "api/v1/auth/generateToken").permitAll()
+                        .requestMatchers("api/v1/auth/createNewUserAccount", "api/v1/auth/generateToken", "/login").permitAll()
                         .requestMatchers("api/v1/auth/user/**").hasAuthority("ROLE_USER")
                         .requestMatchers("api/v1/auth/admin/**").hasAuthority("ROLE_ADMIN")
                         .anyRequest().authenticated() // Protect all other endpoints for the basic case
                 )
+                .formLogin(httpSecurityFormLoginConfigurer -> httpSecurityFormLoginConfigurer
+                        .loginPage(("/login"))
+                        .permitAll())
                 .sessionManagement(sess -> sess
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS) // No sessions
                 )

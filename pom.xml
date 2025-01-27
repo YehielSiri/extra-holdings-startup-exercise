@@ -80,6 +80,12 @@
 			<artifactId>micrometer-registry-prometheus</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-core</artifactId>
+		</dependency>
+
+
 		<!--Lombok dependency-->
 <!--		<dependency>-->
 <!--			<groupId>org.projectlombok</groupId>-->
