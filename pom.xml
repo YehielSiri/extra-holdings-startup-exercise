@@ -98,13 +98,9 @@
 		<!--Two dependency for enable caching our project by Infinispian cache.-->
 		<dependency>
 			<groupId>org.infinispan</groupId>
-			<artifactId>infinispan-spring6-embedded</artifactId>
+			<artifactId>infinispan-spring-boot3-starter-embedded</artifactId>
+			<version>${infinispan.version}</version>
 		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>org.infinispan</groupId>-->
-<!--			<artifactId>infinispan-spring-boot3-starter-embedded</artifactId>-->
-<!--			<version>${infinispan.version}</version>-->
-<!--		</dependency>-->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
